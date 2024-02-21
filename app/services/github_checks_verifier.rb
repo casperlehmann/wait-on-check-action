@@ -96,6 +96,7 @@ class GithubChecksVerifier < ApplicationService
     all_checks = query_check_status
 
     until filters_present?
+      puts "Task not yet present: #{check_name | check_regexp}"
       sleep(2)
     end
 
