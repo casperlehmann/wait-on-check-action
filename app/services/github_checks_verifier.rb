@@ -95,6 +95,10 @@ class GithubChecksVerifier < ApplicationService
   def wait_for_checks
     all_checks = query_check_status
 
+    until filters_present?
+      sleep(2)
+    end
+
     fail_if_requested_check_never_run(all_checks)
 
     until all_checks_complete(all_checks)
